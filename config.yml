@@ -1,0 +1,41 @@
+---
+# Public key to add to rancher user's ~/.ssh/authorized_keys for RKE to work
+# Replace this with your public key if preferred
+# This public key is paired with private key `keys/id_rsa`
+publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhU/kIeAQsvoiUMs25VkfaiOfgCySa40x3TFINx3LvqinbOWwGkLpqSOsOKMUkTZ3IJpsiK7JQk3owcqDtiPEFmeXHdaLj1kdPEzMQyjJqOEq4Xrvl2MFQdh29buGhPhZj96a1qlIeSdj7IOBXn5M3RV2maYO4Qf/FucWVzDZ4KP7mPVD8uoihzhCw0bmkJpwFgOoK+/s8qKoM/mU6wQ7BYY/d48L9TXnzwZlA+smOYIAYexSfSpRBn1Yuz/U/KXuU1hZdj6ggd+sIUrC0aRNJLHu29BK26OjK2K4XZOmjik9E6vFHFkyfLmH1RE8Mg8tJtBeXJ06BWQDoh3g/rzLVK+4UkQ82B/LcXrAK+TzNKEPg/dy/si+fNMZ+E3zfcUhQ8k/O8XhpzxNIy5LaefZEWfWGlrrpA8VcM8AE/2fbkfoGSLjkHXtt77vvtP7l8ub+92NRWwTtI5Uv4iSBtD1mRBBrFWxV3YggRgwEp3kj80apBu9nGUzkjTDIgbqwDR8= ros
+
+# Available Docker version
+# Ref: sudo ros engine list
+# docker-1.12.6
+# docker-1.13.1
+# docker-17.03.1-ce
+# docker-17.03.2-ce
+# docker-17.06.1-ce
+# docker-17.06.2-ce
+# docker-17.09.0-ce
+# docker-17.09.1-ce
+# docker-17.12.0-ce
+# docker-17.12.1-ce
+# docker-18.03.0-ce
+# docker-18.03.1-ce
+# docker-18.06.0-ce - docker-18.06.3-ce
+# docker-18.09.0 - docker-18.09.9
+# docker-19.03.0 - docker-19.03.5
+dockerVersion: docker-19.03.5
+
+master:
+  count: 1  # How many master nodes
+  specs:
+    box: "tranchung/rancheros"
+    eth1: "172.20.22.10"  # First master IP
+    cpu: 1
+    mem: 1536
+
+worker:
+  count: 3  # How many worker nodes
+  specs:
+    box: "tranchung/rancheros"
+    eth1: "172.20.22.20"  # First worker IP
+    cpu: 2
+    mem: 2048
+
